@@ -14,7 +14,7 @@
           :key="todo.date"
           :class="{completed: todo.completed}">
         <label>
-          <input type="checkbox" v-model="todo.completed">
+          <input type="checkbox" v-model="todo.completed">about:blank#blocked
           {{ todo.title }}
         </label>
       </li>
