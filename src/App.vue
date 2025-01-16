@@ -14,7 +14,7 @@
           :key="todo.date"
           :class="{completed: todo.completed}">
         <label>
-          <input type="checkbox" v-model="todo.completed">about:blank#blocked
+          <input type="checkbox" v-model="todo.completed">
           {{ todo.title }}
         </label>
       </li>
@@ -34,7 +34,7 @@ const todos = ref([
   {
     title: 'Aller promener le chien',
     completed: true,
-    date: Date.now(),
+    date: Date.now()
   },
   {
     title: "Changer l'ampoule de la voiture",
