@@ -21,14 +21,16 @@
     </label>
   </li>
   </ul>
+  <label>
+    <input type="checkbox" v-model="hideCompleted"> Masquer les tâches complétées
+  </label>
 </div>
-
 </template>
 
 <script setup>
 import { ref } from 'vue';
 
-
+const hideCompleted = ref(false)
 const newTodo = ref('')
 const todos = ref ([{
   title: 'Aller promener le chien',
