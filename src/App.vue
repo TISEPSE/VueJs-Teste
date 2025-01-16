@@ -1,45 +1,44 @@
 <template>
-  <h1 v-show="tasks.length === 0" class="style">Vous n'avez pas de tâche en cours</h1>
-  <form action="" @submit.prevent="addTask">
-    <input type="text" placeholder="ex: Achetez du pain" v-model="taskValue">
-    <button>Ajouter</button>
-  </form>
-  <br>
-  <hr>
+
+<form action="" @submit.prevent="addTodo">
+
+  <fieldset role="group">
+  <input type="text" placeholder="Tâche a effectuer" v-model="newTodo">
+  <button :disabled="newTodo.length ===0">Ajouter</button>
+  </fieldset>
+
+</form>
+<div v-if="todos.length ===0">Vous n'avez pas de tache a faire :(</div>
+
+<div v-else>
   <ul>
-    <li v-for="(task, index) in tasks" :key="index">
-      {{ task }} <button @click="removeTask(task)">Supprimer</button>
-    </li>
+    <li v-for="todo in todos"
+    :key="todo.date">
+    {{ todo.title }}
+  </li>
   </ul>
+</div>
+
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref } from 'vue';
 
-// Liste des tâches
-const tasks = ref([]);
 
-// Valeur de la nouvelle tâche
-const taskValue = ref("");
+const newTodo = ref('')
+const todos = ref ([])
 
-// Ajouter une tâche
-const addTask = () => {
-  tasks.value.push(taskValue.value);
-  taskValue.value = "";
-};
+// Fonction pour ajouter une tâche
+const addTodo = () => {
+  todos.value.push({
+    title: newTodo.value,
+    completed: false,
+    date: Date.now()
+  })
+  newTodo.value =""
+}
 
-// Supprimer une tâche
-const removeTask = (task) => {
-  tasks.value = tasks.value.filter(m => m !== task);
-};
 </script>
 
 <style>
-.style {
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
-button {
-  margin: 0 5px;
-}
 </style>
